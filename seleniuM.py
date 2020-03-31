@@ -6,16 +6,16 @@ driver = webdriver.PhantomJS('phantomjs.exe')
 def getDataIndo():
     while True:
         driver.get('https://www.covid19.go.id/')
-        positipX = '/html[1]/body[1]/div[1]/div[2]/main[1]/div[1]/section[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[1]/span[2]'
-        sembuhX = '/html[1]/body[1]/div[1]/div[2]/main[1]/div[1]/section[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[1]/span[3]'
-        meninggalX = '/html[1]/body[1]/div[1]/div[2]/main[1]/div[1]/section[1]/div[1]/div[1]/div[6]/div[1]/div[1]/div[1]/div[1]/span[4]'
+        positipX = '/html/body/div[1]/div[2]/main/div/section/div/div/div[6]/div/div[1]/div/div[1]/span[3]/strong'
+        sembuhX = '/html/body/div[1]/div[2]/main/div/section/div/div/div[6]/div/div[1]/div/div[1]/span[4]/strong'
+        meninggalX = '/html/body/div[1]/div[2]/main/div/section/div/div/div[6]/div/div[1]/div/div[1]/span[5]/strong'
 
         positif = driver.find_element_by_xpath(positipX).text
         sembuh = driver.find_element_by_xpath(sembuhX).text
         meninggal = driver.find_element_by_xpath(meninggalX).text
-        join = positif+'\n'+sembuh+'\n'+meninggal
+        join = 'Positif ' +positif+'\n'+ 'Sembuh ' +sembuh+'\n'+ 'Meninggal ' +meninggal
         return join
-        driver.refresh()
+        driver.navigate().refresh();
         time.sleep(30)
         getDataIndo()
 
